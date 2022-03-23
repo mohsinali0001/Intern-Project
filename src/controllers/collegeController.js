@@ -14,23 +14,23 @@ const createCollege = async function (req, res) {
       return res.status(400).send({ status: false, message: "enter valid parameters" })
     }
     if (!(data.name)) {
-      return res.status(400).send({ status: false, msg: "please name required" })
+      return res.status(400).send({ status: false, msg: " name required" })
     }
     if (data.name.trim().length == 0) {
-      return res.status(400).send({ status: false, msg: "please fill the name " })
+      return res.status(400).send({ status: false, msg: "fill the name " })
     }
     let duplicateName = await collegeModel.findOne({ name: data.name })
     if (duplicateName)
       return res.status(400).send({ status: false, msg: "college Name is already present" })
 
     if (!(data.fullName)) {
-      return res.status(400).send({ status: false, msg: "please fullname required" })
+      return res.status(400).send({ status: false, msg: " fullname required" })
     }
     if (data.fullName.trim().length == 0) {
-      return res.status(400).send({ status: false, msg: " please fill the fullName " })
+      return res.status(400).send({ status: false, msg: "  fill the fullName " })
     }
     if (!(data.logoLink)) {
-      return res.status(400).send({ status: false, msg: "please logoLink required" })
+      return res.status(400).send({ status: false, msg: "logoLink required" })
     }
 
     let collegeData = await collegeModel.create(data)
@@ -46,7 +46,7 @@ const createCollege = async function (req, res) {
 let getCollegeDetails = async function (req, res) {
   try {
 
-    let collegeName = req.query.name
+    let collegeName = req.query.collegeName
 
     if (!collegeName) {
       return res.status(400).send({ status: false, message: "college name required" })
